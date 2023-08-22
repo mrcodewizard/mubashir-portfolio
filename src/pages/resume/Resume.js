@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from 'react'
+import React, { useState  } from 'react'
 import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
 
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -8,10 +8,8 @@ import innovadelLogo  from "../../assets/img/innovadel-logo.png";
 
 function Resume() {
     const[collapsed, setCollapse] = useState(null);
-    const [isPending, startTransition] = useTransition();
 
     const handleCollapse = (num) => {
-        startTransition(() => {
             setTimeout(() => {
               if(collapsed === num) {
                 setCollapse(null);
@@ -19,7 +17,6 @@ function Resume() {
                 setCollapse(num);
               }
             }, 200);
-        });
     }
   return (
     <div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Container, Row, Col } from "react-bootstrap";
-import * as Yup from "yup";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { collection, addDoc } from "firebase/firestore"; 

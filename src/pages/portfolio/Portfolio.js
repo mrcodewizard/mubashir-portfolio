@@ -1,5 +1,5 @@
-import React, { useState, useTransition } from 'react'
-import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
+import React from 'react'
+import { Container, Row, Col  } from 'react-bootstrap';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -12,8 +12,6 @@ import oliviaburton from "../../assets/img/olivia_burton.jpg";
 import itnoa from "../../assets/img/itnoadevs_com.jpg";
 import decra from "../../assets/img/decra_com.jpg";
 import castingpax from "../../assets/img/castingpax_com.jpg";
-import portfolioOne from "../../assets/img/portfolio-one.jpg";
-import portfolioTwo from "../../assets/img/portfolio-two.jpg";
 import UserAvatar from "../../assets/img/avatar.jpg";
 import "./portfolio.css";
 
