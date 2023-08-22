@@ -1,0 +1,105 @@
+.resume {
+    background-color: #fff;
+    width: 100%;
+}
+.bio-info {
+    padding: 30px;
+}
+.resume p {
+    color: #333333;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+.ethical-skills {
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.ethical-skills h6 {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.ethical-skills a {
+    font-weight: 600;
+    margin-right: 5px;
+    padding: 10px 20px;
+    font-size: 13px;
+    display: inline-block;
+    border: 1px solid #e6e6e6;
+}
+.ethical-skills a:hover {
+    background: #009688;
+    border-color: #009688;
+    color: #fff;
+}
+.experience {
+    background-color: #fff;
+    width: 100%;
+}
+.experience .exp-item {
+    margin-bottom: 40px;
+    padding: 30px;
+    display: flex;
+    align-items:  flex-start;
+}
+.experience .exp-left {
+    display: inline-block;
+    width: 23%;
+    margin-top: -5px;;
+}
+.exp-left  .sun {
+    font-size: 15px;
+    font-weight: bolder;
+    display: inline-block;
+    font-family:'Courier New', Courier, monospace
+}
+
+.experience .exp-body {
+    display: inline-block;
+    width: 77%;
+    position: relative;
+}
+.experience .exp-body h6 {
+    margin-top: 0px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.experience .exp-body p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.experience .exp-body a {
+    color: #0a58ca
+}
+.experience  .company-logo {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    max-width: 200px;
+}
+.experience  .company-logo img {
+    width: 100%;
+    vertical-align: middle;
+}
+.experience .diploma {
+    color: #009688;
+    font-size: 13px;
+}
+.experience .diploma i {
+    height: 28px;
+    width: 28px;
+    font-size: 14px;
+    border: 1px solid #e6e6e6;
+    text-align: center;
+    margin-right: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

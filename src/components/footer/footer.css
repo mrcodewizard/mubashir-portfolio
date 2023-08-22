@@ -1,0 +1,10 @@
+.prt-footer {
+    width: 100%;
+    padding: 14px 0px;
+    line-height: 14px;
+    background-color: #009688;
+}
+.prt-footer p {
+    text-align: center;
+    margin: 0;
+}

@@ -1,0 +1,79 @@
+.prt-nav {
+    display: flex;
+    background-color: #fff;
+}
+.prt-nav.navbar-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 111;
+}
+.prt-nav .navbar {
+    margin: 0;
+    padding: 0;
+}
+.prt-nav .navbar-brand {
+    color: #055160;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 200px;
+}
+.prt-nav .navbar-brand img {
+    width: 100%;
+    vertical-align: middle;
+    max-width: 130px;
+}
+.prt-nav .navbar-nav {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.prt-nav .nav-link {
+    width: 20%;
+    display: inline-block;
+    padding: 16px 15px;
+    text-align: center;
+    vertical-align: middle;
+    transition: all 0.4s ease-in-out;
+}
+.prt-nav .nav-link.active,
+.prt-nav .nav-link:hover {
+    background:linear-gradient(to bottom, #009688, #051341);
+    color: #fff !important;
+}
+.prt-nav .nav-link:hover span,
+.prt-nav .nav-link:hover i {
+    color: #fff;
+}
+.prt-nav .nav-link span {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+}
+.prt-nav .nav-link .icon {
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+}
+.prt-nav .nav-link.active span,
+.prt-nav .nav-link.active .icon {
+    color: #fff;
+}
+
+@media only screen and (max-width:992px) {
+    .prt-nav .nav-link {
+        width: 100%;
+        display: inline-block;
+        padding: 16px 15px;
+        text-align: left;
+        vertical-align: middle;
+        transition: all 0.4s ease-in-out;
+    }
+}
