@@ -1,204 +1,272 @@
-import React, { useState } from 'react'
-import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
-import { collection, addDoc } from "firebase/firestore"; 
+import React, { useState, useRef } from "react";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import emailjs from '@emailjs/browser';
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase/index";
-import { contactSchema } from '../../validation/contact';
-import Sidebar from '../../components/sidebar/Sidebar';
+import { contactSchema } from "../../validation/contact";
+import Sidebar from "../../components/sidebar/Sidebar";
 import "./contact.css";
 
 function Contact() {
-  const [loading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
-    const [values, setValues] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-    });
-    const [errors, setErrors] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-    });
+  const formRef = useRef();
+	const [loading, setLoading] = useState(false);
+	const [values, setValues] = useState({
+		user_name: "",
+		user_email: "",
+		user_subject: "",
+		user_message: "",
+	});
+	const [errors, setErrors] = useState({
+		user_name: "",
+		user_email: "",
+		user_subject: "",
+		user_message: "",
+	});
 
-  const handleChange = (event) => {
-      const { name, value } = event.target;
-      setValues(prevState => ({
-        ...prevState,
-        [name]: value
-      }));
-  };
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+		setValues((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+	};
 
-  const handleSubmit =async  (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setErrors({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setLoading(true);
+		setErrors({
+			user_name: "",
+			user_email: "",
+			user_subject: "",
+			user_message: "",
+		});
 
-    try {
-        await contactSchema.validate(values, { abortEarly: false });
-        const docRef = await addDoc(collection(db, "contact-us"), {
-          name: values.name,
-          email: values.email,
-          subject: values.subject,
-          message: values.message
-        });
-        console.log("Data added", docRef);
-        toast.success("Your query has been sent successfully. We will reach out to you soon!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-      });
-    } catch(error) {
-      if (error.name === 'ValidationError') {
-          const validationErrors = {};
-          error.inner.forEach(err => {
-              validationErrors[err.path] = err.message;
-          });
-          setErrors(validationErrors);
-          setLoading(false);
-          setHasError(true);
+		try {
+		await contactSchema.validate(values, { abortEarly: false });
+			
+      // service_72ja1mm
+      // template_p22char
+      // public_key: YSD5LxQ4Kub2qmdsO
+
+      // send email to me
+      const result = await emailjs.sendForm('service_72ja1mm', 'template_p22char', formRef.current, "YSD5LxQ4Kub2qmdsO")
+      if(!result){
+        console.log("Error sending");
       } else {
-        setHasError(true);
-        // Handle other errors
-        console.error('Error adding data:', error);
+        console.log("Email sent succesfully", result);
       }
-    }
-    finally {
-      setLoading(false);
-      setValues({ email: '', name: '', subject: "", message: ""});
-    }
-  }
-  
-  return (
-    <div>
-          <ToastContainer />
-         <Container>
-          <Row>
-            <Col md={12} lg={4}>
-              <Sidebar />
-            </Col>
-            <Col md={12} lg={8}>
-              <section className="portfolio">
-                <h3 className="title">Contact Me</h3>
-                <div className="portfolio-contact">
-                      <Row>
-                            <Col sm={12} md={6} lg={4}>
-                                <div className="icon-box text-center">
-                                      <div className="ib-icon">
-                                            <span>
-                                              <ion-icon name="headset-outline"></ion-icon>
-                                            </span>
-                                      </div>
-                                      <div className="ib-info">
-                                          <p className='mb-0'>+92 305 4424271</p>
-                                          <p className='mb-0'>+92 313 6238460</p>
-                                      </div>
-                                </div>
-                            </Col>
 
-                            <Col sm={12} md={6} lg={4}>
-                                <div className="icon-box text-center">
-                                      <div className="ib-icon">
-                                            <span>
-                                              <ion-icon name="mail-outline"></ion-icon>
-                                            </span>
-                                      </div>
-                                      <div className="ib-info">
-                                        <p class="mb-0"><a href="#.">mubashirrahman503@gmail.com</a></p>
-                                        <p class="mb-0"><a href="#.">mubashirlancerr@gmail.com</a></p>
-                                      </div>
-                                </div>
-                            </Col>
+		const docRef = await addDoc(collection(db, "contact-us"), {
+			name: values.user_name,
+			email: values.user_email,
+			subject: values.user_subject,
+			message: values.user_message,
+		});
 
-                            <Col sm={12} md={6} lg={4}>
-                                <div className="icon-box text-center">
-                                      <div className="ib-icon">
-                                            <span>
-                                              <ion-icon name="home-outline"></ion-icon>
-                                            </span>
-                                      </div>
-                                      <div className="ib-info">
-                                          <p>12 Commercial broadway, Paragon City, Lahore</p>
-                                      </div>
-                                </div>
-                            </Col>
-                      </Row>
-                </div>
-              </section>
+      // console.log("Data added", docRef);
 
-              <section className="portfolio-two">
-                <h3 className="title">Say Hello</h3>
-                <div className="portfolio-form">
-                      <Row>
-                          <Col md={12}>
-                                <form role="form" name="contact-form" className='contact-form'
-                                onSubmit={handleSubmit}>
-                                      <div className="form-group">
-                                          { errors.name ? <span className='error'>{errors.name}</span>: ""}
-                                          <label htmlFor="">
-                                            <input type="text" className={`form-control ${errors.name ? "is-invalid": ""}`} name="name" id="name_1"
-                                            placeholder="NAME" value={values.name}  
-                                            onChange={handleChange}/>
-                                          </label>
-                                      </div>
+			toast.success(
+				"Your query has been sent successfully. We will reach out to you soon!",
+				{
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: "light",
+				}
+			);
+			setLoading(false);
+			setValues({ user_email: "", user_name: "", user_subject: "", user_message: "" });
+		} catch (error) {
+			if (error.name === "ValidationError") {
+				const validationErrors = {};
+				error.inner.forEach((err) => {
+					validationErrors[err.path] = err.message;
+				});
+				setErrors(validationErrors);
+				setLoading(false);
+			} else {
+				// Handle other errors
+				console.error("Error adding/sending email data:", error);
+			}
+		}
+	};
 
-                                      <div className="form-group">
-                                        { errors.email ? <span className='error'>{errors.email}</span>: ""}
-                                          <label htmlFor="">
-                                            <input type="email" className={`form-control ${errors.email ? "is-invalid": ""}`} name="email" id="name_1" 
-                                            placeholder="EMAIL" value={values.email}
-                                            onChange={handleChange}
-                                            />
-                                          </label>
-                                      </div>
+	return (
+		<div>
+			<ToastContainer />
+			<Container>
+				<Row>
+					<Col md={12} lg={4}>
+						<Sidebar />
+					</Col>
+					<Col md={12} lg={8}>
+						<section className="portfolio">
+							<h3 className="title">Contact Me</h3>
+							<div className="portfolio-contact">
+								<Row>
+									<Col sm={12} md={6} lg={4}>
+										<div className="icon-box text-center">
+											<div className="ib-icon">
+												<span>
+													<ion-icon name="headset-outline"></ion-icon>
+												</span>
+											</div>
+											<div className="ib-info">
+												<p className="mb-0">+92 305 4424271</p>
+												<p className="mb-0">+92 313 6238460</p>
+											</div>
+										</div>
+									</Col>
 
-                                      <div className="form-group">
-                                          { errors.subject ? <span className='error'>{errors.subject}</span>: ""}
-                                          <label htmlFor="">
-                                            <input type="text" className={`form-control ${errors.subject ? "is-invalid": ""}`} name="subject" id="name_1"
-                                            placeholder="SUBJECT" value={values.subject}
-                                            onChange={handleChange} />
-                                          </label>
-                                      </div>
+									<Col sm={12} md={6} lg={4}>
+										<div className="icon-box text-center">
+											<div className="ib-icon">
+												<span>
+													<ion-icon name="mail-outline"></ion-icon>
+												</span>
+											</div>
+											<div className="ib-info">
+												<p className="mb-0">
+													<a href="#.">mubashirrahman503@gmail.com</a>
+												</p>
+												<p className="mb-0">
+													<a href="#.">mubashirlancerr@gmail.com</a>
+												</p>
+											</div>
+										</div>
+									</Col>
 
-                                      <div className="form-group">
-                                      { errors.message ? <span className='error'>{errors.message}</span>: ""}
-                                        <label>
-                                            <textarea className={`form-control ${errors.message ? "is-invalid": ""}`} name="message" id="message_1" rows="5"
-                                            placeholder="CONTENT..."
-                                            value={values.message} onChange={handleChange}></textarea>
-                                          </label>
-                                      </div>
+									<Col sm={12} md={6} lg={4}>
+										<div className="icon-box text-center">
+											<div className="ib-icon">
+												<span>
+													<ion-icon name="home-outline"></ion-icon>
+												</span>
+											</div>
+											<div className="ib-info">
+												<p>12 Commercial broadway, Paragon City, Lahore</p>
+											</div>
+										</div>
+									</Col>
+								</Row>
+							</div>
+						</section>
 
-                                      <div className="button-group">
-                                          <button type="submit" disabled={loading}>
-                                              { loading ? <Spinner size='sm' /> : "Submit"}
-                                          </button>
-                                      </div>
+						<section className="portfolio-two">
+							<h3 className="title">Say Hello</h3>
+							<div className="portfolio-form">
+								<Row>
+									<Col md={12}>
+										<form
+											name="contact-form"
+											className="contact-form"
+											onSubmit={handleSubmit}
+                      				ref={formRef}
+										>
+											<div className="form-group">
+												{errors.user_name ? (
+													<span className="error">{errors.user_name}</span>
+												) : (
+													""
+												)}
+												<label htmlFor="">
+													<input
+														type="text"
+														className={`form-control ${
+															errors.user_name ? "is-invalid" : ""
+														}`}
+														name="user_name"
+														id="user_name"
+														placeholder="NAME"
+														value={values.user_name}
+														onChange={handleChange}
+													/>
+												</label>
+											</div>
 
-                                </form>
-                          </Col>
-                      </Row>
-                </div>
-              </section>
+											<div className="form-group">
+												{errors.user_email ? (
+													<span className="error">{errors.user_email}</span>
+												) : (
+													""
+												)}
+												<label htmlFor="">
+													<input
+														type="email"
+														className={`form-control ${
+															errors.user_email ? "is-invalid" : ""
+														}`}
+														name="user_email"
+														id="user_email"
+														placeholder="EMAIL"
+														value={values.user_email}
+														onChange={handleChange}
+													/>
+												</label>
+											</div>
 
-            </Col>
-          </Row>
-        </Container>
-    </div>
-  )
+											<div className="form-group">
+												{errors.user_subject ? (
+													<span className="error">{errors.user_subject}</span>
+												) : (
+													""
+												)}
+												<label htmlFor="">
+													<input
+														type="text"
+														className={`form-control ${
+															errors.user_subject ? "is-invalid" : ""
+														}`}
+														name="user_subject"
+														id="name_1"
+														placeholder="SUBJECT"
+														value={values.user_subject}
+														onChange={handleChange}
+													/>
+												</label>
+											</div>
+
+											<div className="form-group">
+												{errors.user_message ? (
+													<span className="error">{errors.user_message}</span>
+												) : (
+													""
+												)}
+												<label>
+													<textarea
+														className={`form-control ${
+															errors.user_message ? "is-invalid" : ""
+														}`}
+														name="user_message"
+														id="message_1"
+														rows="5"
+														placeholder="CONTENT..."
+														value={values.user_message}
+														onChange={handleChange}
+													></textarea>
+												</label>
+											</div>
+
+											<div className="button-group">
+												<button type="submit" disabled={loading}>
+													{loading ? <Spinner size="sm" /> : "Submit"}
+												</button>
+											</div>
+										</form>
+									</Col>
+								</Row>
+							</div>
+						</section>
+					</Col>
+				</Row>
+			</Container>
+		</div>
+	);
 }
 
-export default Contact
+export default Contact;

@@ -49,7 +49,7 @@ function About() {
                                   <div className="col-12 col-sm-6 col-md-4">
                                       <div className="service-column">
                                           <div className="service-icon">
-                                              <i class="i-service">
+                                              <i className="i-service">
                                                 <ion-icon name="logo-whatsapp"></ion-icon>
                                               </i>
                                           </div>
@@ -63,7 +63,7 @@ function About() {
                                   <div className="col-12 col-sm-6 col-md-4">
                                       <div className="service-column">
                                           <div className="service-icon">
-                                              <i class="i-service">
+                                              <i className="i-service">
                                                 <ion-icon name="brush-outline"></ion-icon>
                                               </i>
                                           </div>
@@ -77,7 +77,7 @@ function About() {
                                   <div className="col-12 col-sm-6 col-md-4">
                                       <div className="service-column">
                                           <div className="service-icon">
-                                              <i class="i-service">
+                                              <i className="i-service">
                                                 <ion-icon name="bug-outline"></ion-icon>
                                               </i>
                                           </div>
@@ -91,7 +91,7 @@ function About() {
                                   <div className="col-12 col-sm-6 col-md-4">
                                       <div className="service-column">
                                           <div className="service-icon">
-                                              <i class="i-service">
+                                              <i className="i-service">
                                                 <ion-icon name="color-palette"></ion-icon>
                                               </i>
                                           </div>
@@ -105,7 +105,7 @@ function About() {
                                   <div className="col-12 col-sm-6 col-md-4">
                                       <div className="service-column">
                                           <div className="service-icon">
-                                              <i class="i-service">
+                                              <i className="i-service">
                                                 <ion-icon name="apps"></ion-icon>
                                               </i>
                                           </div>
@@ -119,7 +119,7 @@ function About() {
                                   <div className="col-12 col-sm-6 col-md-4">
                                       <div className="service-column">
                                           <div className="service-icon">
-                                              <i class="i-service">
+                                              <i className="i-service">
                                                 <ion-icon name="code-working"></ion-icon>
                                               </i>
                                           </div>

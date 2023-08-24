@@ -13,7 +13,7 @@ function Sidebar() {
    });
 
    const handleSticky = () => {
-    if(window.outerWidth >= 1200) {
+    if(window.outerWidth >= 1440) {
         const sidebar = document.querySelector('.prt-sidebar');
         const scrollPosition = window.scrollY;
         const sidebarOffset = sidebar.offsetHeight
@@ -31,7 +31,7 @@ function Sidebar() {
         <aside className="prt-sidebar">
             <h3 className="title">Professional Details</h3>
             <div className="user-avatar">
-                <img src={mubashirAvatar} className="img-fluid" alt="user-image" />
+                <img src={mubashirAvatar} className="img-fluid" alt="user-avatar" />
             </div>
             <div className="user-info">
                 <ul>

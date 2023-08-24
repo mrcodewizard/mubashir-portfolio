@@ -17,7 +17,6 @@ function Newsletter() {
         name: "",
         email: ""
     });
-    const [hasError, setHasError] = useState(false);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -59,9 +58,7 @@ function Newsletter() {
                 validationErrors[err.path] = err.message;
               });
               setErrors(validationErrors);
-              setHasError(true);
             } else {
-              setHasError(true);
               // Handle other errors
               console.error('Error adding data:', error);
             }
