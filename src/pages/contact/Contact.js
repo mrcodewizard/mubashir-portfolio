@@ -45,42 +45,34 @@ function Contact() {
 		try {
 		await contactSchema.validate(values, { abortEarly: false });
 			
-      // service_72ja1mm
-      // template_p22char
-      // public_key: YSD5LxQ4Kub2qmdsO
-
       // send email to me
-      const result = await emailjs.sendForm('service_72ja1mm', 'template_p22char', formRef.current, "YSD5LxQ4Kub2qmdsO")
+      const result = await emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, formRef.current, process.env.REACT_APP_PUBLIC_KEY)
       if(!result){
         console.log("Error sending");
       } else {
         console.log("Email sent succesfully", result);
-      }
+		  await addDoc(collection(db, "contact-us"), {
+				name: values.user_name,
+				email: values.user_email,
+				subject: values.user_subject,
+				message: values.user_message,
+		  });
 
-		const docRef = await addDoc(collection(db, "contact-us"), {
-			name: values.user_name,
-			email: values.user_email,
-			subject: values.user_subject,
-			message: values.user_message,
-		});
-
-      // console.log("Data added", docRef);
-
-			toast.success(
-				"Your query has been sent successfully. We will reach out to you soon!",
-				{
-					position: "top-right",
-					autoClose: 5000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-					theme: "light",
-				}
-			);
+		  toast.success(
+			"Your query has been sent successfully. We will reach out to you soon!",
+			{
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
 			setLoading(false);
 			setValues({ user_email: "", user_name: "", user_subject: "", user_message: "" });
+       }
 		} catch (error) {
 			if (error.name === "ValidationError") {
 				const validationErrors = {};
