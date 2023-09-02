@@ -1,0 +1,32 @@
+name: build and publish
+
+on:
+  push: 
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: unbuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    name: Build and Push
+    env:
+       CI: false # Set true will treat errors as warnings
+      
+    
+    steps: 
+      - name: Install all dependencies
+        run: npm install
+
+      - name: creating build
+        run: npm build
+
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+
+      
+
