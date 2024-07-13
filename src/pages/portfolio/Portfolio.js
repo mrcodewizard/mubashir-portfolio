@@ -13,6 +13,8 @@ import itnoa from "../../assets/img/itnoadevs_com.jpg";
 import decra from "../../assets/img/decra_com.jpg";
 import castingpax from "../../assets/img/castingpax_com.jpg";
 import UserAvatar from "../../assets/img/avatar.jpg";
+import NomanAvt from "../../assets/img/noman.jpeg";
+import WomenAVT from "../../assets/img/women-ceo.jpg";
 import "./portfolio.css";
 
 function Portfolio() {
@@ -167,69 +169,65 @@ function Portfolio() {
 
               <div className="testimonial-body">
                     <Carousel 
-                    autoPlay={true}
+                    autoPlay={false}
                     interval={1500}
                     showArrows={false}
                     showStatus={false}
-                    showIndicators={false}
+                    showIndicators={true}
                     infiniteLoop={true}
 
                     >
                       <Row>
-                          <Col sm={4}>
-                                <div style={{"backgroundImage": `url(${UserAvatar})`}} className='testi-avatar'/>
+                          <Col sm={4} className='testi-image-col'>
+                              <div style={{"backgroundImage": `url(${UserAvatar})`, backgroundSize: 'cover', maxHeight: '180px', marginTop: 40}} className='testi-avatar'/>
                           </Col>
                           <Col sm={8} className='testi-column'>
                               <div className="testi-icon">
                                     <i className="quote-left"></i>
                               </div>
                               <div className="testi-body">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus debitis, 
-                                  dolorum voluptatum id, aliquam tenetur iste doloremque</p>
+                                <p>I was incredibly impressed with Mubashir's work on developing our website at Movado. Their expertise in creating a responsive design, ensuring error-free functionality, and building a robust backend structure was invaluable.  Mubashir's dedication and collaborative spirit, along with the team's efforts, led to a significant increase in our brand sales</p>
 
-                                  <h4 className="testi-user">Alex Joseph</h4>
+                                  <h4 className="testi-user">Sean Willians</h4>
                                   <p className='testi-prof'>Senior Product Designer</p>
                               </div>
                           </Col>
                       </Row>
 
                       <Row>
-                        <Col sm={4}>
-                              <div style={{"backgroundImage": `url(${UserAvatar})`}} className='testi-avatar'/>
+                        <Col sm={4} className='testi-image-col'>
+                          <div style={{"backgroundImage": `url(${NomanAvt})`, backgroundSize: 'cover', maxHeight: '180px', marginTop: 40}} className='testi-avatar'/>
                         </Col>
                         <Col sm={8} className='testi-column'>
                              <div className="testi-icon">
                                   <i className="quote-left"></i>
                              </div>
                             <div className="testi-body">
-                              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus debitis, 
-                                dolorum voluptatum id, aliquam tenetur iste doloremque</p>
+                              <p>I had the pleasure of working with Mubashir on our web development team, and I highly recommend him as a Fullstack developer. Mubashir consistently demonstrated a deep understanding of React, delivering high-quality code that enhanced the user experience of our projects. His attention to detail and problem-solving skills were evident in every task he undertook.</p>
 
-                                <h4 className="testi-user">Adam Grande</h4>
-                                <p className='testi-prof'>Senior Product Designer</p>
+                                <h4 className="testi-user">Noman Ahmad</h4>
+                                <p className='testi-prof'>CEO, ITNOA Devs Ltd.</p>
                             </div>
                         </Col>
                     </Row>
 
                     <Row>
-                        <Col sm={4}>
-                              <div style={{"backgroundImage": `url(${UserAvatar})`}} className='testi-avatar'/>
+                        <Col sm={4} className='testi-image-col'>
+                              <div style={{"backgroundImage": `url(${WomenAVT})`, backgroundSize: 'cover', maxHeight: '180px'}} className='testi-avatar'/>
                         </Col>
                         <Col sm={8} className='testi-column'>
                              <div className="testi-icon">
                                   <i className="quote-left"></i>
                              </div>
                             <div className="testi-body">
-                              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus debitis, 
-                                dolorum voluptatum id, aliquam tenetur iste doloremque</p>
+                              <p>Mubashir has been incredible in building our roofing website. His has some solid skills in design & coding to turn our ideas to reality. Highyly recommended</p>
 
                                 <h4 className="testi-user">Hailey Mathews</h4>
                                 <p className='testi-prof'>Senior Product Designer</p>
                             </div>
                         </Col>
                     </Row>
-                    </Carousel>
-                   
+                  </Carousel>
               </div>
             </section>
           </Col>

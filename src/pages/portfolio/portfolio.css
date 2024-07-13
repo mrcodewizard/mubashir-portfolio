@@ -135,6 +135,7 @@
 .testimonial .testi-column {
     position: relative;
 }
+
  .testimonial .title {
     margin: 0px;
 }
@@ -182,4 +183,10 @@
 }
 .carousel .control-dots li.selected.dot {
     background: linear-gradient(to bottom, #009688, #051341);
+}
+
+@media (max-width: 576px) {
+    .testimonial .testi-image-col {
+        display: none;
+    }
 }
